@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Honra Desfeita: O Destino do Ser Humano</title>
+    <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --secondary-dark: #16213e;
+            --accent-dark: #0f3460;
+            --text-primary: #e0f7fa;
+            --text-secondary: #b0bec5;
+            --accent-color: #5a6268;
+            --success-color: #4caf50;
+            --error-color: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark), var(--accent-dark));
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .ruin-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23333"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23333"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23333"/></svg>');
+            background-size: cover;
+            z-index: -1;
+            animation: wave 20s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1200px; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: rgba(30, 30, 46, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--accent-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(90, 98, 104, 0.1) 50%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .title-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+            color: var(--text-secondary);
+            font-style: italic;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #90a4ae;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        
+        .intro-poem {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 2.5rem auto;
+            padding: 2rem;
+            background: rgba(40, 40, 60, 0.7);
+            border-radius: 15px;
+            border-left: 8px solid var(--accent-color);
+            text-align: left;
+            max-width: 900px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .intro-poem::after {
+            content: """;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.5;
+        }
+        
+        .treasure-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .clue-card {
+            background: rgba(50, 50, 70, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            border: 1px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .clue-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+        
+        .clue-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .clue-number {
+            font-size: 2.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(144, 164, 174, 0.5);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .clue-poem {
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        .clue-input-container {
+            margin-top: auto;
+        }
+        
+        .clue-input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(70, 70, 90, 0.9);
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .clue-input:focus {
+            outline: none;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 10px rgba(90, 98, 104, 0.5);
+        }
+        
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+            width: 100%;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: #37474f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .messages-container {
+            margin: 2rem 0;
+        }
+        
+        .message {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .success {
+            background: rgba(76, 175, 80, 0.3);
+            border: 2px solid var(--success-color);
+            color: #e8f5e9;
+        }
+        
+        .error {
+            background: rgba(244, 67, 54, 0.3);
+            border: 2px solid var(--error-color);
+            color: #ffebee;
+        }
+        
+        .treasure-section {
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .treasure-chest {
+            margin: 0 auto 3rem;
+            width: 250px;
+            height: 180px;
+            background: #5d4037;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s;
+        }
+        
+        .treasure-chest:hover {
+            transform: scale(1.08);
+        }
+        
+        .chest-lid {
+            width: 250px;
+            height: 50px;
+            background: #4e342e;
+            border-radius: 15px 15px 0 0;
+            position: absolute;
+            top: 0;
+            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 2;
+        }
+        
+        .chest-body {
+            width: 250px;
+            height: 130px;
+            background: #5d4037;
+            border-radius: 0 0 15px 15px;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .chest-lock {
+            width: 40px;
+            height: 40px;
+            background: #757575;
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            left: 105px;
+            z-index: 3;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .treasure-content {
+            display: none;
+            padding: 3rem;
+            background: rgba(80, 80, 100, 0.9);
+            border-radius: 20px;
+            margin-top: 2rem;
+            color: #cfd8dc;
+            box-shadow: 0 0 40px rgba(100, 100, 120, 0.7);
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .treasure-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .treasure-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .ruin-elements {
+            position: absolute;
+            font-size: 2.5rem;
+            z-index: -1;
+            animation: float 20s infinite linear;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-30px) translateX(15px) rotate(5deg); }
+            50% { transform: translateY(-15px) translateX(30px) rotate(0deg); }
+            75% { transform: translateY(-40px) translateX(15px) rotate(-5deg); }
+            100% { transform: translateY(0) translateX(0) rotate(0deg); }
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 15px;
+            font-style: italic;
+            text-align: center;
+            border-top: 1px solid var(--accent-color);
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        .design-notes {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(40, 40, 60, 0.6);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .treasure-map {
+                grid-template-columns: 1fr;
+            }
+            
+            .clue-card {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .intro-poem {
+                padding: 1.5rem;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ruin-waves"></div>
+    
+    <!-- Elementos de ruína flutuantes -->
+    <div class="ruin-elements" style="top: 10%; left: 5%;">🏭</div>
+    <div class="ruin-elements" style="top: 20%; left: 90%;">🌋</div>
+    <div class="ruin-elements" style="top: 60%; left: 8%;">🏚️</div>
+    <div class="ruin-elements" style="top: 70%; left: 85%;">🗑️</div>
+    <div class="ruin-elements" style="top: 40%; left: 15%;">💀</div>
+    <div class="ruin-elements" style="top: 30%; left: 80%;">🔥</div>
+    
+    <div class="container">
+        <header>
+            <div class="title-container">
+                <h1>A Honra Desfeita</h1>
+                <p class="subtitle">O Destino do Ser Humano em um Mundo que Ele Próprio Destrói</p>
+                
+                <div class="intro-poem">
+                    <p>Oh, viajante de um mundo em ruínas,</p>
+                    <p>Onde a honra se perdeu na névoa do progresso,</p>
+                    <p>O que resta da natureza aguarda por ti,</p>
+                    <p>Escondido entre destroços e o próprio retrocesso.</p>
+                    <p>Decifre os enigmas que a destruição traz,</p>
+                    <p>E a verdade oculta se revelará,</p>
+                    <p>Com segredos que somente a Terra conhece,</p>
+                    <p>E lições que a humanidade jamais aprenderá.</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="treasure-map">
+            <div class="clue-card">
+                <div class="clue-number">Pista 1</div>
+                <div class="clue-poem">
+                    <p>Respiração da Terra, puro e vital,</p>
+                    <p>Que indústrias e carros começaram a poluir,</p>
+                    <p>Na cidade densa, já não é natural,</p>
+                    <p>E o futuro parece estar a definhar.</p>
+                    <p>O que sou eu, elemento da vida?</p>
+                </div>
+                <div class="clue-input-container">
+                    <input type="text" class="clue-input" placeholder="Sua resposta..." data-answer="ar">
+                    <button class="submit-btn">Verificar Resposta</button>
+                </div>
+            </div>
+            
+            <div class="clue-card">
+                <div class="clue-number">Pista 2</div>
+                <div class="clue-poem">
+                    <p>Fonte de vida que os rios carregam,</p>
+                    <p>Mas que fábricas sujam sem qualquer pudor,</p>
+                    <p>Plásticos e químicos que nos envenenam,</p>
+                    <p>Num ciclo perverso de dor e temor.</p>
+                    <p>O que sou eu, líquido essencial?</p>
+                </div>
+                <div class="clue-input-container">
+                    <input type="text" class="clue-input" placeholder="Sua resposta..." data-answer="água">
+                    <button class="submit-btn">Verificar Resposta</button>
+                </div>
+            </div>
+            
+            <div class="clue-card">
+                <div class="clue-number">Pista 3</div>
+                <div class="clue-poem">
+                    <p>Verde extensão que a vida abrigava,</p>
+                    <p>Mas que machados e fogo reduziram,</p>
+                    <p>Espécies que a ganância exterminava,</p>
+                    <p>E o equilíbrio natural definiram.</p>
+                    <p>O que sou eu, manto terrestre?</p>
+                </div>
+                <div class="clue-input-container">
+                    <input type="text" class="clue-input" placeholder="Sua resposta..." data-answer="floresta">
+                    <button class="submit-btn">Verificar Resposta</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="messages-container">
+            <div class="message success" id="success-message">
+                Resposta correta! Continue sua reflexão.
+            </div>
+            
+            <div class="message error" id="error-message">
+                Resposta incorreta. Reflita mais profundamente.
+            </div>
+        </div>
+        
+        <div class="treasure-section">
+            <div class="treasure-chest" id="treasure-chest">
+                <div class="chest-lid"></div>
+                <div class="chest-body">
+                    <div class="chest-lock"></div>
+                    <span style="color: #757575; font-size: 4rem;">💡</span>
+                </div>
+            </div>
+            
+            <div class="treasure-content" id="treasure-content">
+                <h2>Parabéns, Pensador Consciente!</h2>
+                <p>Você desvendou os mistérios da destruição humana e encontrou a verdade oculta!</p>
+                <div class="intro-poem" style="background: rgba(80, 80, 100, 0.5); color: #cfd8dc; margin: 2rem auto;">
+                    <p>Que sua consciência nunca adormeça,</p>
+                    <p>Que suas ações sempre reflitam cuidado,</p>
+                    <p>Pois o verdadeiro tesouro não está no baú,</p>
+                    <p>Mas no mundo que deixaremos como legado.</p>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 1.3rem;">Continue refletindo e agindo por um futuro mais sustentável!</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>A Honra Desfeita - Uma experiência reflexiva sobre o impacto humano</p>
+            <p>Desenvolvido com HTML, CSS e JavaScript para promover a conscientização ambiental</p>
+            
+            <div class="design-notes">
+                <p><strong>Notas de Design:</strong> Este layout foi aprimorado com base em princípios de tipografia e hierarquia visual, inspirado em referências de design russo com foco em kerning, contraste e espaçamento.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clueInputs = document.querySelectorAll('.clue-input');
+            const submitButtons = document.querySelectorAll('.submit-btn');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const treasureChest = document.getElementById('treasure-chest');
+            const treasureContent = document.getElementById('treasure-content');
+            const chestLid = document.querySelector('.chest-lid');
+            
+            let correctAnswers = 0;
+            const totalClues = 3;
+            
+            // Adicionar evento de verificação para cada botão
+            submitButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    checkAnswer(index);
+                });
+            });
+            
+            // Permitir verificação com Enter
+            clueInputs.forEach((input, index) => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkAnswer(index);
+                    }
+                });
+            });
+            
+            // Função para verificar resposta
+            function checkAnswer(index) {
+                const input = clueInputs[index];
+                const answer = input.getAttribute('data-answer').toLowerCase();
+                const userAnswer = input.value.trim().toLowerCase();
+                
+                if (userAnswer === answer) {
+                    showMessage(successMessage);
+                    input.disabled = true;
+                    submitButtons[index].disabled = true;
+                    input.style.background = '#4c566a';
+                    input.style.color = '#a3be8c';
+                    correctAnswers++;
+                    
+                    if (correctAnswers === totalClues) {
+                        setTimeout(() => {
+                            alert('Parabéns! Você resolveu todas as pistas! Agora clique no baú da verdade!');
+                        }, 1000);
+                    }
+                } else {
+                    showMessage(errorMessage);
+                    input.style.background = '#bf616a';
+                    input.style.color = '#ffffff';
+                    
+                    // Efeito de shake no input
+                    input.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        input.style.animation = '';
+                    }, 500);
+                }
+            }
+            
+            // Função para mostrar mensagem
+            function showMessage(messageElement) {
+                // Esconder todas as mensagens primeiro
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                
+                // Mostrar a mensagem específica
+                messageElement.style.display = 'block';
+                
+                // Esconder após 3 segundos
+                setTimeout(() => {
+                    messageElement.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Evento para abrir o baú do tesouro
+            treasureChest.addEventListener('click', function() {
+                if (correctAnswers === totalClues) {
+                    chestLid.style.transform = 'rotateX(180deg)';
+                    chestLid.style.transformOrigin = 'top';
+                    
+                    setTimeout(() => {
+                        treasureContent.style.display = 'block';
+                        treasureContent.scrollIntoView({ behavior: 'smooth' });
+                    }, 1000);
+                } else {
+                    alert('Você precisa resolver todas as pistas antes de abrir o baú da verdade!');
+                    
+                    // Efeito de shake no baú
+                    treasureChest.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        treasureChest.style.animation = '';
+                    }, 500);
+                }
+            });
+            
+            // Adicionar keyframes para animação de shake
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

@@ -1,1006 +1,277 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uma experiência reflexiva sobre o impacto humano nos oceanos e praias">
-    <title>Praia Perdida: O Legado do Ser Humano</title>
-    
-    <style>
-        :root {
-            --cor-areia: #f0e6d2;
-            --cor-areia-escura: #e6d6b5;
-            --cor-mar-claro: #87ceeb;
-            --cor-mar-medio: #4682b4;
-            --cor-mar-escuro: #1e3a5f;
-            --cor-concha: #ffd1dc;
-            --cor-coral: #ff6b6b;
-            --cor-alga: #2e8b57;
-            --cor-sol: #ffd700;
-            --cor-texto-escuro: #2c3e50;
-            --cor-texto-medio: #5d6d7e;
-            --cor-sucesso: #27ae60;
-            --cor-erro: #e74c3c;
-            --cor-aviso: #f39c12;
-            
-            --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --sombra-media: 0 8px 15px rgba(0, 0, 0, 0.1);
-            --sombra-grande: 0 15px 25px rgba(0, 0, 0, 0.15);
-            
-            --transicao-rapida: 0.3s ease;
-            --transicao-media: 0.5s ease;
-            --transicao-lenta: 0.8s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: linear-gradient(180deg, var(--cor-mar-claro) 0%, var(--cor-mar-medio) 50%, var(--cor-mar-escuro) 100%);
-            color: var(--cor-texto-escuro);
-            min-height: 100vh;
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .ondas-praia {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%23f0e6d2" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"/><path fill="%23f0e6d2" d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"/><path fill="%23f0e6d2" d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"/></svg>');
-            background-size: cover;
-            z-index: -1;
-            animation: onda-praia 15s linear infinite;
-        }
-        
-        @keyframes onda-praia {
-            0% { background-position-x: 0; }
-            100% { background-position-x: 1200px; }
-        }
-        
-        .elementos-praia {
-            position: absolute;
-            font-size: 2.5rem;
-            z-index: -1;
-            animation: flutuar-praia 20s infinite linear;
-            opacity: 0.7;
-        }
-        
-        @keyframes flutuar-praia {
-            0% { transform: translateY(0) translateX(0) rotate(0deg); }
-            25% { transform: translateY(-30px) translateX(15px) rotate(5deg); }
-            50% { transform: translateY(-15px) translateX(30px) rotate(0deg); }
-            75% { transform: translateY(-40px) translateX(15px) rotate(-5deg); }
-            100% { transform: translateY(0) translateX(0) rotate(0deg); }
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Despertar dos Abismos</title>
+<style>
+/* 🌊 ESTILO GERAL DO JOGO */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at bottom, #00111a, #000814);
+  color: #e6f2ff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
-        /* Estilos do Painel Admin */
-        .admin-panel {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: var(--sombra-media);
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-        }
+/* 🎴 CONTAINER PRINCIPAL DAS CARTAS */
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 25px;
+}
 
-        .admin-panel input[type="password"] {
-            padding: 10px;
-            border: 2px solid var(--cor-mar-medio);
-            border-radius: 5px;
-            font-size: 1rem;
-            width: 250px;
-        }
+/* 🃏 CARTAS */
+.card {
+  width: 220px;
+  height: 310px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
 
-        .admin-panel button {
-            padding: 10px 15px;
-            background-color: var(--cor-mar-escuro);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color var(--transicao-rapida);
-            font-size: 1rem;
-        }
+/* 🔁 ANIMAÇÃO DE VIRAR */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s;
+  transform-style: preserve-3d;
+}
 
-        .admin-panel button:hover {
-            background-color: var(--cor-mar-medio);
-        }
+/* quando a carta vira */
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
 
-        .admin-status {
-            font-weight: bold;
-            color: var(--cor-erro);
-        }
+/* 🌒 FRENTE E VERSO */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
 
-        .admin-status.active {
-            color: var(--cor-sucesso);
-        }
-        
-        header {
-            margin-bottom: 3rem;
-            padding: 3rem 2rem;
-            background: rgba(240, 230, 210, 0.9);
-            border-radius: 20px;
-            box-shadow: var(--sombra-grande);
-            border: 2px solid var(--cor-areia-escura);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 209, 220, 0.1) 50%, transparent 70%);
-            z-index: 0;
-        }
-        
-        .title-container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            color: var(--cor-mar-escuro);
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .subtitle {
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-            color: var(--cor-mar-medio);
-            font-family: 'Georgia', serif;
-            font-style: italic;
-            font-weight: 300;
-        }
-        
-        .intro-poem {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 2.5rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            border-left: 8px solid var(--cor-mar-medio);
-            text-align: left;
-            max-width: 900px;
-            box-shadow: var(--sombra-media);
-            position: relative;
-            font-family: 'Georgia', serif;
-        }
-        
-        .intro-poem::after {
-            content: """;
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            font-size: 3rem;
-            color: var(--cor-mar-medio);
-            opacity: 0.5;
-            font-family: 'Georgia', serif;
-        }
-        
-        .treasure-map {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin: 4rem 0;
-            perspective: 1000px;
-        }
-        
-        /* Estilos para os cartões virados */
-        .card-container {
-            height: 400px;
-            perspective: 1000px;
-            cursor: pointer;
-            position: relative; /* Adicionado para o overlay de bloqueio */
-        }
-        
-        /* Estilo para cartão bloqueado */
-        .card-container.locked {
-            cursor: not-allowed;
-            opacity: 0.6;
-            pointer-events: none; /* Desabilita cliques */
-            transition: opacity var(--transicao-media);
-        }
+/* Verso (polvo dourado) */
+.card-front {
+  background: url('verso_definitivo_polvo_v2.png') center/cover no-repeat;
+}
 
-        .card-container.locked::after {
-            content: "BLOQUEADO";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 20px;
-            z-index: 10;
-        }
+/* Frente (imagem do animal) */
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #001d29;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 10px;
+}
 
-        .card-container.unlocked {
-            cursor: pointer;
-            opacity: 1;
-            pointer-events: all;
-        }
+/* 🧩 PERGUNTA (CHARADA) */
+.question {
+  font-size: 0.95rem;
+  margin: 10px;
+  color: #9cd6ff;
+  text-shadow: 0 0 8px #00334d;
+}
 
-        .card-container.unlocked::after {
-            content: none;
-        }
+/* 📸 IMAGEM DO ANIMAL */
+.card-back img {
+  width: 160px;
+  border-radius: 10px;
+  margin-top: 5px;
+  box-shadow: 0 0 10px rgba(0,150,255,0.3);
+}
 
-        .card {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform var(--transicao-media);
-            border-radius: 20px;
-            box-shadow: var(--sombra-grande);
-        }
-        
-        .card.flipped {
-            transform: rotateY(180deg);
-        }
-        
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-        
-        .card-back {
-            background: linear-gradient(135deg, var(--cor-mar-escuro), var(--cor-mar-medio));
-            color: white;
-            border: 2px solid var(--cor-areia-escura);
-        }
-        
-        .card-back::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--cor-sol), var(--cor-concha));
-        }
-        
-        .card-front {
-            background: rgba(255, 255, 255, 0.9);
-            transform: rotateY(180deg);
-            border: 2px solid var(--cor-areia-escura);
-            text-align: center;
-        }
-        
-        .card-front::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--cor-mar-medio), var(--cor-concha));
-        }
-        
-        .card-image {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 1.5rem;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--cor-areia-escura);
-            box-shadow: var(--sombra-media);
-        }
-        
-        .card-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--cor-sol);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        
-        .card-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-        }
-        
-        .clue-number {
-            font-size: 2.2rem;
-            color: var(--cor-mar-medio);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            font-family: 'Georgia', serif;
-        }
-        
-        .clue-poem {
-            font-style: italic;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-            font-size: 1.1rem;
-            text-align: justify;
-            color: var(--cor-texto-medio);
-            font-family: 'Georgia', serif;
-        }
-        
-        .clue-input-container {
-            margin-top: auto;
-            width: 100%;
-        }
-        
-        .clue-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--cor-areia-escura);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--cor-texto-escuro);
-            transition: all var(--transicao-rapida);
-            font-family: 'Arial', sans-serif;
-        }
-        
-        .clue-input:focus {
-            outline: none;
-            border: 2px solid var(--cor-mar-medio);
-            box-shadow: 0 0 10px rgba(70, 130, 180, 0.3);
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            margin-top: 1rem;
-            background: var(--cor-mar-escuro);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color var(--transicao-rapida);
-            font-weight: bold;
-        }
-        
-        .submit-btn:hover {
-            background: var(--cor-mar-medio);
-        }
-        
-        .submit-btn:disabled {
-            background: var(--cor-texto-medio);
-            cursor: not-allowed;
-        }
-        
-        .message-box {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 10px;
-            color: white;
-            font-weight: bold;
-            z-index: 1000;
-            display: none;
-            box-shadow: var(--sombra-grande);
-            transition: opacity var(--transicao-rapida);
-        }
-        
-        #success-message {
-            background-color: var(--cor-sucesso);
-        }
-        
-        #error-message {
-            background-color: var(--cor-erro);
-        }
-        
-        .treasure-chest-container {
-            text-align: center;
-            margin: 5rem 0;
-        }
-        
-        .treasure-chest {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(to bottom right, #8b4513, #a0522d);
-            border: 5px solid var(--cor-sol);
-            border-radius: 15px;
-            position: relative;
-            margin: 0 auto;
-            cursor: pointer;
-            transition: transform var(--transicao-rapida);
-            box-shadow: var(--sombra-grande);
-        }
-        
-        .treasure-chest:hover {
-            transform: scale(1.05);
-        }
-        
-        .chest-lid {
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: linear-gradient(to right, #a0522d, #8b4513);
-            border-radius: 15px 15px 0 0;
-            transform-origin: bottom;
-            transition: transform 1s ease-out;
-            border-bottom: 5px solid var(--cor-sol);
-        }
-        
-        .chest-lock {
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--cor-sol);
-            border-radius: 50%;
-            border: 2px solid #b8860b;
-        }
-        
-        .treasure-content {
-            margin-top: 3rem;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: var(--sombra-grande);
-            border: 5px solid var(--cor-sol);
-            display: none;
-            text-align: left;
-        }
-        
-        .treasure-content h2 {
-            font-size: 2.5rem;
-            color: var(--cor-mar-escuro);
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid var(--cor-sol);
-            padding-bottom: 10px;
-        }
-        
-        .treasure-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--cor-texto-escuro);
-            margin-bottom: 1.5rem;
-        }
-        
-        .treasure-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .treasure-content ul li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            color: var(--cor-texto-medio);
-        }
-        
-        .treasure-content ul li::before {
-            content: "🌊";
-            margin-right: 10px;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-10px); }
-            40%, 80% { transform: translateX(10px); }
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 5rem;
-            color: white;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .intro-poem {
-                font-size: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .treasure-map {
-                grid-template-columns: 1fr;
-            }
-            
-            .card-container {
-                height: 350px;
-            }
+/* ✍️ INPUT DE RESPOSTA */
+.answer-input {
+  margin-top: 10px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: none;
+  width: 80%;
+  text-align: center;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: #00384d;
+  color: #e6f2ff;
+}
 
-            .admin-panel {
-                flex-direction: column;
-            }
-        }
-    </style>
+/* Cartas bloqueadas */
+.card.locked {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* 💎 BAÚ FINAL */
+#treasure {
+  display: none;
+  margin-top: 60px;
+  animation: appear 2s ease forwards;
+}
+@keyframes appear {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+.chest {
+  width: 200px;
+  height: 150px;
+  margin: 0 auto;
+  background: url('https://cdn-icons-png.flaticon.com/512/3531/3531808.png') center/contain no-repeat;
+  animation: chestOpen 3s infinite alternate;
+}
+@keyframes chestOpen {
+  from {transform: scale(1);}
+  to {transform: scale(1.05);}
+}
+
+/* 🌟 CARTA FINAL */
+.final-card {
+  display: none;
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(0, 34, 51, 0.8);
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.4);
+  animation: floatUp 4s ease forwards;
+}
+@keyframes floatUp {
+  from {opacity: 0; transform: translateY(100px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.final-card h2 {
+  color: #00baff;
+  font-size: 1.6rem;
+  text-shadow: 0 0 12px #0077aa;
+}
+.final-card p {
+  font-style: italic;
+  color: #cceeff;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+</style>
 </head>
 <body>
-    
-    <div class="ondas-praia">
-        <span class="elementos-praia" style="top: 10%; left: 5%; color: var(--cor-concha);">🐚</span>
-        <span class="elementos-praia" style="top: 50%; left: 20%; color: var(--cor-alga);">🌿</span>
-        <span class="elementos-praia" style="top: 80%; left: 70%; color: var(--cor-coral);">🐠</span>
-        <span class="elementos-praia" style="top: 30%; left: 90%; color: var(--cor-sol);">🌟</span>
+
+<h1>🌊 O Despertar dos Abismos</h1>
+<p>Resolva as charadas e liberte a consciência das profundezas.</p>
+
+<!-- 🎴 CONTAINER DAS CARTAS -->
+<div class="game-container" id="cards"></div>
+
+<!-- 💎 BAÚ FINAL -->
+<div id="treasure">
+  <div class="chest"></div>
+  <div class="final-card" id="finalCard">
+    <h2>Você despertou a Consciência dos Abismos!</h2>
+    <p>
+      Entre o céu e as profundezas,<br>
+      o silêncio te reconhece.<br><br>
+      Nem o deus das marés,<br>
+      nem o homem da superfície —<br><br>
+      mas <b>você</b>,<br>
+      aquele que ouviu o chamado.<br><br>
+      Guardião entre luz e sombra,<br>
+      portador do saber das águas.<br><br>
+      Que teu espírito permaneça claro,<br>
+      como a corrente que liga<br>
+      o infinito… ao humano.
+    </p>
+  </div>
+</div>
+
+<script>
+/* ================================
+   🌊 JOGO: O DESPERTAR DOS ABISMOS
+   ================================ */
+
+// 📜 Lista de cartas e charadas
+const cardsData = [
+  {img: 'carta_05_imperador_v2.png', pergunta: "Sou vasto e profundo, sustento a vida e o mistério. Cubro o mundo, mas poucos me conhecem inteiro. Quem sou eu?", resposta: "oceano"},
+  {img: 'carta_06_viajante_v2.png', pergunta: "O homem me lança sem pensar, flutuo leve, mas mato devagar. Sou o que o mar não deveria guardar. Quem sou eu?", resposta: "plástico"},
+  {img: 'carta_08_guardiao_v2.png', pergunta: "Falo sem voz, penso sem mente, nado em bandos, sou inteligente. Não sou homem, mas entendo gente. Quem sou eu?", resposta: "golfinho"},
+  {img: 'carta_11_mergulhador_v2.png', pergunta: "Sou o ato que une homem e mar, nem guerra, nem conquista, mas sim escutar. Que gesto é esse que o mundo precisa lembrar?", resposta: "respeitar"},
+  {img: 'carta_12_sentinela_v2.png', pergunta: "Habito o fundo onde o som se cala, não falo, mas ensino quem me escuta. O que se encontra quando se mergulha em si?", resposta: "consciência"},
+  {img: 'carta_13_coroa_v2.png', pergunta: "Não tenho pressa, nem medo, moldo rochas e destino. O que aprendes comigo, quando aceitas meu ritmo divino?", resposta: "paciência"},
+  {img: 'carta_polvo_gigante.png', pergunta: "Sou o espelho que o homem evita, o mar dentro do peito que grita. Quando enfim me entende, o que desperta em sua vida?", resposta: "sabedoria"}
+];
+
+// 🌟 Renderiza as cartas dinamicamente
+const container = document.getElementById("cards");
+
+cardsData.forEach((carta, index) => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  if (index > 0) card.classList.add("locked");
+
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back">
+        <div class="question">${carta.pergunta}</div>
+        <img src="${carta.img}" alt="Carta ${index+1}">
+        <input class="answer-input" type="text" placeholder="Sua resposta...">
+      </div>
     </div>
-    
-    <div class="container">
+  `;
+  container.appendChild(card);
+});
 
-        <!-- Painel de Administrador -->
-        <div class="admin-panel">
-            <input type="password" id="admin-password" placeholder="Senha do Administrador (Opcional)">
-            <button id="admin-login-btn">Desbloquear Tudo</button>
-            <span id="admin-status" class="admin-status">Modo Admin: Desativado</span>
-        </div>
-        
-        <header>
-            <div class="title-container">
-                <h1>Praia Perdida: O Legado do Ser Humano</h1>
-                <p class="subtitle">Uma jornada de reflexão em busca do tesouro azul</p>
-            </div>
-            
-            <blockquote class="intro-poem">
-                <p>O mar murmura segredos antigos,</p>
-                <p>A areia guarda rastros de perigos.</p>
-                <p>Sete pistas, sete nós a desatar,</p>
-                <p>Para o tesouro azul, a verdade encontrar.</p>
-                <p>A cada acerto, um novo caminho se abre,</p>
-                <p>Revelando a história que a humanidade encobre.</p>
-            </blockquote>
-        </header>
-        
-        <div class="treasure-map">
-            
-            <!-- Pista 1: Água/Oceanos -->
-            <div class="card-container" data-clue-index="0">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">1</span>
-                        <p class="card-text">O Berço Azul</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 1</span>
-                        <p class="clue-poem">Sou o berço da vida, vasto e profundo,<br>Regulo o clima e nutro o mundo.<br>Sem mim, a Terra seria só deserto.<br>O que sou eu, que está sempre por perto?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pista 2: Sol/Luz Solar -->
-            <div class="card-container locked" data-clue-index="1">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">2</span>
-                        <p class="card-text">O Doador de Vida</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 2</span>
-                        <p class="clue-poem">Brilho no céu, dou calor e energia,<br>Essencial para a fotossíntese marinha.<br>Sem minha força, tudo seria escuridão.<br>Quem sou eu, que ilumina o oceano?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pista 3: Recifes de Coral -->
-            <div class="card-container locked" data-clue-index="2">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">3</span>
-                        <p class="card-text">A Cidade Submersa</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 3</span>
-                        <p class="clue-poem">Sou a floresta tropical do mar, colorida e viva,<br>Abrigo milhões de espécies, uma vida coletiva.<br>Com a água quente, minha saúde se esvai.<br>O que sou eu, lar que o peixe não trai?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pista 4: Baleias -->
-            <div class="card-container locked" data-clue-index="3">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">4</span>
-                        <p class="card-text">O Gigante Gentil</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 4</span>
-                        <p class="clue-poem">Sou o maior do planeta, canto canções profundas,<br>Minha migração cruza as mais longas rotundas.<br>Filtro o krill, sou um mamífero ancestral.<br>Quem sou eu, gigante do reino animal?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pista 5: Plástico -->
-            <div class="card-container locked" data-clue-index="4">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">5</span>
-                        <p class="card-text">O Fantasma Moderno</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 5</span>
-                        <p class="clue-poem">Fui criado para durar, mas me tornei praga,<br>Estrangulo a vida marinha, sou uma chaga.<br>Flutuo em ilhas, me desintegro em pedaços.<br>O que sou eu, feito por mãos humanas em laços?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pista 6: Ar/Atmosfera -->
-            <div class="card-container locked" data-clue-index="5">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">6</span>
-                        <p class="card-text">O Respirar Invisível</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 6</span>
-                        <p class="clue-poem">Não me veem, mas me sentem no pulmão,<br>Sou o oxigênio que sustenta a nação.<br>O fitoplâncton me produz em abundância.<br>O que sou eu, que nos dá a confiança?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pista 7: Praia/Areia -->
-            <div class="card-container locked" data-clue-index="6">
-                <div class="card">
-                    <div class="card-back card-face">
-                        <span class="card-number">7</span>
-                        <p class="card-text">O Limite Dourado</p>
-                    </div>
-                    <div class="card-front card-face">
-                        <span class="clue-number">Pista 7</span>
-                        <p class="clue-poem">Sou o encontro do mar com a terra firme,<br>Onde a onda quebra e a vida se exprime.<br>Feita de grãos, sou o palco do lazer.<br>O que sou eu, que todos querem ver?</p>
-                        <div class="clue-input-container">
-                            <input type="text" class="clue-input" placeholder="Sua Resposta Aqui">
-                            <button class="submit-btn">Verificar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        
-        <div id="success-message" class="message-box">Resposta Correta!</div>
-        <div id="error-message" class="message-box">Resposta Incorreta. Tente novamente!</div>
-        
-        <div class="treasure-chest-container">
-            <p style="font-size: 1.5rem; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px;">O Tesouro Azul Espera...</p>
-            <div class="treasure-chest" id="treasure-chest">
-                <div class="chest-lid" id="chest-lid"></div>
-                <div class="chest-lock"></div>
-            </div>
-            
-            <div class="treasure-content" id="treasure-content">
-                <h2>O Tesouro Azul: A Consciência</h2>
-                <p>Parabéns, explorador(a)! Você desvendou todas as pistas e encontrou o verdadeiro "Tesouro Azul": a **Consciência** sobre o impacto humano nos oceanos.</p>
-                <p>A jornada revelou que o maior tesouro é o nosso planeta azul, e o maior perigo é a nossa negligência. O legado que deixamos nas praias e nos mares é um reflexo direto das nossas escolhas.</p>
-                <p>Agora que você tem a chave do conhecimento, o desafio é agir. O oceano precisa de você!</p>
-                
-                <h3>O Chamado à Ação:</h3>
-                <ul>
-                    <li>🌊 Reduza o uso de plásticos de uso único.</li>
-                    <li>🌊 Participe de limpezas de praia ou rios locais.</li>
-                    <li>🌊 Apoie organizações de conservação marinha.</li>
-                    <li>🌊 Eduque amigos e familiares sobre a importância dos oceanos.</li>
-                </ul>
-            </div>
-        </div>
-        
-        <footer>
-            <p>&copy; 2024 Praia Perdida. Todos os direitos reservados.</p>
-        </footer>
-    </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cardContainers = document.querySelectorAll('.card-container');
-            const clueInputs = document.querySelectorAll('.clue-input');
-            const submitButtons = document.querySelectorAll('.submit-btn');
-            const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
-            const treasureChest = document.getElementById('treasure-chest');
-            const chestLid = document.getElementById('chest-lid');
-            const treasureContent = document.getElementById('treasure-content');
-            const adminPasswordInput = document.getElementById('admin-password');
-            const adminLoginBtn = document.getElementById('admin-login-btn');
-            const adminStatus = document.getElementById('admin-status');
+// 🎮 Lógica do jogo
+const cards = document.querySelectorAll(".card");
+let currentCard = 0;
 
-            let correctAnswers = 0;
-            const totalClues = cardContainers.length;
-            const ADMIN_PASSWORD = "eu te amo";
-            const ADMIN_STORAGE_KEY = "admin_unlocked";
-            
-            const respostasCorretas = {
-                0: ['água', 'agua', 'oceanos', 'mar'],
-                1: ['sol', 'luz solar', 'raio solar'],
-                2: ['recifes de coral', 'recife de coral', 'corais', 'coral'],
-                3: ['baleias', 'baleia', 'cetáceos'],
-                4: ['plástico', 'plastico', 'lixo plástico', 'lixo plastico'],
-                5: ['ar', 'atmosfera', 'vento', 'oxigênio', 'oxigenio'],
-                6: ['praia', 'praias', 'areia', 'costa']
-            };
+// Clique na carta para virar
+cards.forEach((card, index) => {
+  card.addEventListener("click", () => {
+    if (card.classList.contains("locked")) return;
+    card.classList.toggle("flipped");
+  });
 
-            // --- Lógica de Admin e Inicialização ---
+  // Quando digitar a resposta
+  const input = card.querySelector(".answer-input");
+  input.addEventListener("change", () => {
+    const resposta = input.value.trim().toLowerCase();
+    if (resposta === cardsData[index].resposta.toLowerCase()) {
+      card.style.boxShadow = "0 0 15px #00ffcc";
+      if (index + 1 < cards.length) {
+        cards[index + 1].classList.remove("locked");
+      } else {
+        showTreasure();
+      }
+    } else {
+      input.value = "";
+      alert("Resposta incorreta! Tente novamente.");
+    }
+  });
+});
 
-            function setAdminMode(isActive) {
-                if (isActive) {
-                    localStorage.setItem(ADMIN_STORAGE_KEY, 'true');
-                    adminStatus.textContent = 'Modo Admin: ATIVO';
-                    adminStatus.classList.add('active');
-                    // Desbloqueia todos os cartões e vira o primeiro para dar a sensação de "tudo liberado"
-                    cardContainers.forEach(container => {
-                        container.classList.remove('locked');
-                        container.classList.add('unlocked');
-                    });
-                    // Vira todos os cartões para revelar as respostas (opcional, mas dramático)
-                    document.querySelectorAll('.card').forEach(card => {
-                        if (!card.classList.contains('flipped')) {
-                            card.classList.add('flipped');
-                        }
-                    });
-                    // Desabilita os inputs e botões para evitar submissão
-                    clueInputs.forEach(input => {
-                        input.disabled = true;
-                        input.value = 'DESBLOQUEADO (ADMIN)';
-                        input.style.background = '#e8f8f5';
-                        input.style.color = '#27ae60';
-                        input.style.borderColor = '#27ae60';
-                    });
-                    submitButtons.forEach(btn => btn.disabled = true);
-                    correctAnswers = totalClues; // Permite abrir o baú
-                    showMessage(successMessage, "Modo Administrador Ativado! Todas as pistas liberadas.");
-                } else {
-                    localStorage.removeItem(ADMIN_STORAGE_KEY);
-                    adminStatus.textContent = 'Modo Admin: Desativado';
-                    adminStatus.classList.remove('active');
-                    // Não reverte o estado dos cartões, apenas a flag
-                }
-            }
+// 💫 Mostra o baú final e poesia
+function showTreasure() {
+  const treasure = document.getElementById("treasure");
+  treasure.style.display = "block";
+  setTimeout(() => {
+    document.getElementById("finalCard").style.display = "block";
+  }, 2000);
+}
 
-            function checkAdminStatus() {
-                const isAdmin = localStorage.getItem(ADMIN_STORAGE_KEY) === 'true';
-                if (isAdmin) {
-                    setAdminMode(true);
-                } else {
-                    // Garante que apenas o primeiro cartão esteja desbloqueado no início
-                    updateCardLockStatus();
-                }
-            }
+// 🧙‍♂️ Modo Admin: Pressione "A" para liberar tudo
+document.addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() === "a") {
+    cards.forEach(c => c.classList.remove("locked"));
+    alert("Modo Admin Ativado! Todas as cartas liberadas.");
+  }
+});
+</script>
 
-            adminLoginBtn.addEventListener('click', function() {
-                const password = adminPasswordInput.value.trim();
-                if (password.toLowerCase() === ADMIN_PASSWORD) {
-                    setAdminMode(true);
-                    adminPasswordInput.value = '';
-                } else {
-                    showMessage(errorMessage, "Senha incorreta. Tente novamente.");
-                    adminPasswordInput.value = '';
-                }
-            });
-
-            // --- Lógica Sequencial ---
-
-            function updateCardLockStatus() {
-                // Se estiver no modo admin, não faz nada (setAdminMode já cuidou disso)
-                if (localStorage.getItem(ADMIN_STORAGE_KEY) === 'true') return;
-
-                let unlockedCount = 0;
-                cardContainers.forEach((container, index) => {
-                    const card = container.querySelector('.card');
-                    const input = clueInputs[index];
-                    
-                    // Verifica se a resposta já foi marcada como correta (se o input está desabilitado)
-                    const isAnswered = input.disabled;
-
-                    if (isAnswered) {
-                        unlockedCount++;
-                    }
-
-                    // O cartão atual é o próximo a ser desbloqueado se o anterior foi respondido
-                    const isNextToUnlock = index === unlockedCount;
-
-                    if (index === 0 || isAnswered || isNextToUnlock) {
-                        container.classList.remove('locked');
-                        container.classList.add('unlocked');
-                    } else {
-                        container.classList.add('locked');
-                        container.classList.remove('unlocked');
-                    }
-                });
-                correctAnswers = unlockedCount; // Atualiza a contagem de respostas corretas
-            }
-            
-            // --- Event Listeners e Funções Principais ---
-
-            // Adicionar evento de clique para virar os cartões
-            cardContainers.forEach((container, index) => {
-                container.addEventListener('click', function(e) {
-                    // Não virar se o clique foi no input, botão ou se estiver bloqueado
-                    if (e.target.classList.contains('clue-input') || 
-                        e.target.classList.contains('submit-btn') ||
-                        this.classList.contains('locked')) {
-                        return;
-                    }
-                    
-                    const card = this.querySelector('.card');
-                    card.classList.toggle('flipped');
-                });
-            });
-            
-            // Adicionar evento de verificação para cada botão
-            submitButtons.forEach((button, index) => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Impedir que o cartão vire novamente
-                    checkAnswer(index);
-                });
-            });
-            
-            // Permitir verificação com Enter
-            clueInputs.forEach((input, index) => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.stopPropagation(); // Impedir que o cartão vire novamente
-                        checkAnswer(index);
-                    }
-                });
-            });
-            
-            // Função para verificar resposta
-            function checkAnswer(index) {
-                const input = clueInputs[index];
-                const userAnswer = input.value.trim().toLowerCase();
-                
-                if (!userAnswer) {
-                    showMessage(errorMessage, "Por favor, digite uma resposta!");
-                    return;
-                }
-                
-                // Normalizar resposta (remove acentos e caracteres especiais)
-                const normalizedUserAnswer = userAnswer.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                const respostasAceitas = respostasCorretas[index];
-                
-                const isCorrect = respostasAceitas.some(resposta => {
-                    const normalizedResposta = resposta.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                    return normalizedUserAnswer === normalizedResposta;
-                });
-                
-                if (isCorrect) {
-                    showMessage(successMessage, "Resposta Correta! Próxima pista desbloqueada.");
-                    input.disabled = true;
-                    submitButtons[index].disabled = true;
-                    input.style.background = '#e8f8f5';
-                    input.style.color = '#27ae60';
-                    input.style.borderColor = '#27ae60';
-                    
-                    updateCardLockStatus(); // Atualiza o status de bloqueio para liberar a próxima
-                    
-                    if (correctAnswers === totalClues) {
-                        setTimeout(() => {
-                            alert('Parabéns! Você resolveu todas as pistas marinhas! Agora clique no baú do tesouro azul!');
-                        }, 1000);
-                    }
-                } else {
-                    showMessage(errorMessage, "Resposta Incorreta. Tente novamente!");
-                    input.style.background = '#fdedec';
-                    input.style.color = '#e74c3c';
-                    input.style.borderColor = '#e74c3c';
-                    
-                    // Efeito de shake no input
-                    input.style.animation = 'shake 0.5s';
-                    setTimeout(() => {
-                        input.style.animation = '';
-                    }, 500);
-                }
-            }
-            
-            // Função para mostrar mensagem
-            function showMessage(messageElement, text) {
-                // Esconder todas as mensagens primeiro
-                successMessage.style.display = 'none';
-                errorMessage.style.display = 'none';
-                
-                // Mostrar a mensagem específica
-                messageElement.textContent = text;
-                messageElement.style.display = 'block';
-                
-                // Esconder após 3 segundos
-                setTimeout(() => {
-                    messageElement.style.display = 'none';
-                }, 3000);
-            }
-            
-            // Evento para abrir o baú do tesouro
-            treasureChest.addEventListener('click', function() {
-                if (correctAnswers === totalClues) {
-                    chestLid.style.transform = 'rotateX(-120deg)';
-                    
-                    setTimeout(() => {
-                        treasureContent.style.display = 'block';
-                        treasureContent.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'start'
-                        });
-                    }, 1000);
-                } else {
-                    const faltam = totalClues - correctAnswers;
-                    alert(`Você precisa resolver mais ${faltam} pista(s) marinha(s) antes de abrir o baú do tesouro azul!`);
-                    
-                    // Efeito de shake no baú
-                    treasureChest.style.animation = 'shake 0.5s';
-                    setTimeout(() => {
-                        treasureChest.style.animation = '';
-                    }, 500);
-                }
-            });
-
-            // Inicializa o status de bloqueio e admin
-            checkAdminStatus();
-        });
-    </script>
 </body>
 </html>
